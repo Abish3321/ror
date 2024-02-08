@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+    <title>Online Test</title>
+    <style>
+    body {
+      padding-top: 56px;
+    }
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #d0e7ff;
+      padding: 20px 0;
+      text-align: center;
+    }
+    .navbar-brand {
+        margin-left:20px;
+    }
+
+    .footer a {
+        color: #333; /* Set the text color */
+        text-decoration: none; /* Remove underlines */
+        font-weight: normal; /* Set font weight to normal */
+    }
+
+    .footer a:hover {
+        color: #007bff; /* Change text color on hover */
+        text-decoration: underline; /* Underline on hover */
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #d0e7ff;">
+    <a class="navbar-brand" href="#">Online Test</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+
+    <%= yield %>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p><a href="#">About Us</a></p>
+        </div>
+        <div class="col-md-6">
+          <p><a href="#">Contact Us</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

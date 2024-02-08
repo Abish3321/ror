@@ -1,0 +1,31 @@
+<h1>Questions</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Question</th>
+      <th>Answers</th>
+      <th>Correct Answer</th>
+      <th>Max Time Allowed</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.id %></td>
+        <td><%= question.text %></td>
+        <td><%= question.answers.join(", ") %></td>
+        <td><%= question.correct_answer %></td>
+        <td><%= question.max_time_allowed %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_question_path(question), class: "btn btn-primary btn-sm" %>
+          <%= button_to "Delete", admin_question_path(question), method: :delete, data: { confirm: "Are you sure you want to delete this question?" }, class: "btn btn-danger btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Add New Question", new_admin_question_path, class: "btn btn-success" %>

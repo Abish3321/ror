@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+  <%= javascript_importmap_tags %>
+    <style>
+        .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #d0e7ff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+
+  .navbar-nav .nav-item .nav-link {
+    color: #007bff; /* Set the default color */
+    transition: color 0.3s; /* Add a smooth transition effect */
+
+
+    font-weight: bold;
+  }
+
+  .navbar-nav .nav-item .nav-link:hover {
+    color: #0056b3; /* Set the hover color */
+    text-decoration: none; /* Remove underline on hover (optional) */
+  }
+    </style>
+
+  <title>Admin Dashboard</title>
+</head>
+<body>
+
+  <%= render '/admin/admin_header' %>
+
+  <div class="container mt-4">
+    <% if notice %>
+      <div id="notice-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= notice %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+
+
+    <%= yield %>
+  </div>
+
+  <%= render '/admin/footer' %>
+
+
+<script>
+  // Automatically close the notice after 5 seconds
+  setTimeout(function() {
+    var alert = document.getElementById('notice-alert');
+    if (alert) {
+      alert.remove();
+    }
+  }, 5000);
+</script>
+</body>
+
+</html>

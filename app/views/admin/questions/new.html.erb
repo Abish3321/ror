@@ -1,0 +1,27 @@
+<h1>Add a New Question</h1>
+
+<%= form_with(model: @question, url: admin_questions_path, method: :post, class: "needs-validation") do |form| %>
+  <div class="mb-3">
+    <%= form.label :text, class: "form-label" %>
+    <%= form.text_area :text, rows: 4, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :answers, class: "form-label" %>
+    <%= form.text_area :answers, rows: 4, class: "form-control", required: true, placeholder: "Enter answers separated by commas" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :correct_answer, class: "form-label" %>
+    <%= form.text_field :correct_answer, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :max_time_allowed, class: "form-label" %>
+    <%= form.number_field :max_time_allowed, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit 'Create Question', class: "btn btn-primary" %>
+  </div>
+<% end %>

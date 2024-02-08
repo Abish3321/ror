@@ -1,0 +1,11 @@
+<h2>Login</h2>
+
+<%= form_with(url: admin_authenticate_path, method: :post) do |form| %>
+  <%= form.label :username %>
+  <%= form.text_field :username, class: 'form-control', required: true %>
+
+  <%= form.label :password %>
+  <%= form.password_field :password, class: 'form-control', required: true %>
+
+  <%= form.submit 'Login', class: 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,25 @@
+<%= form_with(model: question, url: admin_question_path(@question), method: :patch) do |form| %>
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_area :text, rows: 4, class: "form-control", required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :answers %>
+    <%= form.text_area :answers, rows: 4, class: "form-control", required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :correct_answer %>
+    <%= form.text_field :correct_answer, class: "form-control", required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_time_allowed %>
+    <%= form.number_field :max_time_allowed, class: "form-control", required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Update Question', class: "btn btn-primary" %>
+  </div>
+<% end %>
