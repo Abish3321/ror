@@ -4,9 +4,8 @@ Rails.application.routes.draw do
     post 'authenticate', to: 'admin#authenticate'
     get 'dashboard', to: 'admin#dashboard'
     get 'logout', to: 'admin#logout'
-
-
     resources :questions
+    resources :feedback
   end
 
   root 'home#index'

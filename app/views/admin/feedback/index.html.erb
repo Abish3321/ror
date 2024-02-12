@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Feedback</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.No.</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Email</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">By</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @feedbacks.each_with_index do |feedback, index| %>
+        <tr>
+          <th scope="row"><%= index + 1 %></th>
+          <td><%= feedback.subject %></td>
+          <td><%= feedback.user.email %></td>
+          <td><%= feedback.created_at.to_date.strftime('%Y-%m-%d') %></td>
+          <td><%= feedback.created_at.strftime('%I:%M %p') %></td>
+          <td><%= feedback.user.name %></td>
+          <td>
+            <%= link_to 'View', admin_feedback_path(feedback), class: 'btn btn-success btn-sm' %>
+            <%= link_to 'Delete', admin_feedback_path(feedback), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
