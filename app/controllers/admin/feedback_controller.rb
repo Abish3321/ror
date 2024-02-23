@@ -12,9 +12,10 @@ class Admin::FeedbackController < ApplicationController
 
   def destroy
     @feedback = Feedback.find(params[:id])
-    @feedback.destroy
+    @feedback.destroy! # Use destroy! for immediate deletion
     redirect_to admin_feedbacks_path, notice: 'Feedback was successfully deleted.'
   end
+
 
   private
   def require_admin_login

@@ -1,9 +1,15 @@
+
+
 Rails.application.routes.draw do
   namespace :admin do
     get 'login', to: 'admin#login'
     post 'authenticate', to: 'admin#authenticate'
     get 'dashboard', to: 'admin#dashboard'
     get 'logout', to: 'admin#logout'
+
+    get 'user_rank', to: 'admin#user_rank'
+
+    resources :users, only: [:index, :destroy]
     resources :questions
     resources :feedback
   end

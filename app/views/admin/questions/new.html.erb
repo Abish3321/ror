@@ -8,21 +8,22 @@
         </div>
 
         <div class="mb-3">
-          <%= form.text_field :option_a, rows: 4, class: "form-control", required: true, placeholder: "Enter option a" %>
+          <%= form.text_field :option_a, class: "form-control", required: true, placeholder: "Enter option a" %>
         </div>
         <div class="mb-3">
-          <%= form.text_field :option_b, rows: 4, class: "form-control", required: true, placeholder: "Enter option b" %>
+          <%= form.text_field :option_b, class: "form-control", required: true, placeholder: "Enter option b" %>
         </div>
         <div class="mb-3">
-          <%= form.text_field :option_c, rows: 4, class: "form-control", required: true, placeholder: "Enter option c" %>
+          <%= form.text_field :option_c, class: "form-control", required: true, placeholder: "Enter option c" %>
         </div>
         <div class="mb-3">
-          <%= form.text_field :option_d, rows: 4, class: "form-control", required: true, placeholder: "Enter option d" %>
+          <%= form.text_field :option_d, class: "form-control", required: true, placeholder: "Enter option d" %>
         </div>
+
         <div class="mb-3">
-          <%= form.label :correct_answer, class: "form-label" %>
-          <%= form.select :correct_answer, options_for_select(["Option A", "Option B", "Option C", "Option D"], @question.correct_answer), { include_blank: "Select correct answer" }, { class: "form-select", required: true } %>
+          <%= form.select :correct_answer, options_for_select([["Option A", "option_a"], ["Option B", "option_b"], ["Option C", "option_c"], ["Option D", "option_d"]], @question.correct_answer), { include_blank: "Select correct answer" }, { class: "form-select", required: true } %>
         </div>
+        
         <div class="mb-3">
           <%= form.submit 'Submit', class: "btn btn-primary me-2" %>
         </div>

@@ -9,7 +9,7 @@
         <th scope="col">Date</th>
         <th scope="col">Time</th>
         <th scope="col">By</th>
-        <th scope="col">Actions</th>
+        <th scope="col">Actions</th>  
       </tr>
     </thead>
     <tbody>
@@ -23,7 +23,9 @@
           <td><%= feedback.user.name %></td>
           <td>
             <%= link_to 'View', admin_feedback_path(feedback), class: 'btn btn-success btn-sm' %>
-            <%= link_to 'Delete', admin_feedback_path(feedback), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+            <%= form_with(url: admin_feedback_path(feedback), method: :delete, data: { confirm: 'Are you sure?' }) do |form| %>
+              <%= form.submit 'Delete', class: 'btn btn-danger btn-sm' %>
+            <% end %>
           </td>
         </tr>
       <% end %>

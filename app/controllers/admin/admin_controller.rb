@@ -33,6 +33,10 @@ class Admin::AdminController < ApplicationController
     # Display admin dashboard
   end
 
+  def user_rank
+    @users_rank = User.includes(:tests).order('tests.score DESC')
+  end
+
   private
 
   def require_admin_login

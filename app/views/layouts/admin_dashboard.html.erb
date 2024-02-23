@@ -4,9 +4,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= turbo_include_tags %>
 
   <style>
@@ -38,19 +37,45 @@
     <%= yield %>
   </div>
 
+  <!-- Modal Frame for Turbo -->
+  <turbo-frame id="deleteModal"></turbo-frame>
+
+  
   <%= render '/admin/footer' %>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Automatically close the notice after 5 seconds
+    setTimeout(function() {
+      var alert = document.getElementById('notice-alert');
+      if (alert) {
+        alert.remove();
+      }
+    }, 5000);
 
 
-<script>
-  // Automatically close the notice after 5 seconds
-  setTimeout(function() {
-    var alert = document.getElementById('notice-alert');
-    if (alert) {
-      alert.remove();
-    }
-  }, 5000);
-</script>
+  // Enable hover behavior for Bootstrap dropdowns
+  $(document).ready(function() {
+    // For dropdown menus that need hover behavior
+    $('.navbar .dropdown').hover(function() {
+      $(this).find('.dropdown-menu').first().stop(true, true).delay(250).slideDown();
+    }, function() {
+      $(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp();
+    });
+
+    // Add class to open dropdown on hover
+    $('.navbar .dropdown').each(function() {
+      $(this).hover(function() {
+        $(this).addClass('show');
+        $(this).find('.dropdown-menu').first().addClass('show');
+      }, function() {
+        $(this).removeClass('show');
+        $(this).find('.dropdown-menu').first().removeClass('show');
+      });
+    });
+  });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>

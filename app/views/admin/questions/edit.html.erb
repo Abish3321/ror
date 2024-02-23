@@ -1,3 +1,30 @@
-<h1>Edit Question</h1>
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1 class="text-center mb-4">Edit Question</h1>
+      <%= form_with(model: @question, url: admin_question_path(@question), method: :patch, class: "needs-validation") do |form| %>
+        <div class="mb-3">
+          <%= form.text_area :text, rows: 4, class: "form-control", required: true, placeholder: "Write Question here ....." %>
+        </div>
 
-<%= render 'form', question: @question %>
+        <% @question.answers.each_with_index do |answer, index| %>
+          <div class="mb-3">
+            <%= form.fields_for :answers, answer do |answer_form| %>
+              <%= answer_form.text_field :text, class: "form-control", required: true, placeholder: "Enter option" %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <div class="mb-3">
+          <%= form.label :correct_answer, "Select correct answer", class: "form-label" %>
+          <%= form.select :correct_answer, options_for_select([["Option A", "option_a"], ["Option B", "option_b"], ["Option C", "option_c"], ["Option D", "option_d"]], @question.correct_answer), { include_blank: "Select correct answer" }, { class: "form-select", required: true } %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.submit 'Update', class: "btn btn-primary me-2" %>
+          <%= link_to 'Back', admin_questions_path, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

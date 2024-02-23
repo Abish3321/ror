@@ -13,3 +13,4 @@ export { application }
 //= require bootstrap
 //= require rails-ujs
 //= require_tree
+//= require rails-ujs

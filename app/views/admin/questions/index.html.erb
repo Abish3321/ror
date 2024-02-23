@@ -5,22 +5,26 @@
       <tr>
         <th>ID</th>
         <th>Question</th>
+        <th>Correct Answer</th>
         <th>Actions</th>
       </tr>
     </thead>
     <!-- Table body -->
     <tbody>
-      <% @questions.each do |question| %>
-        <tr>
-          <td><%= question.id %></td>
-          <td><%= question.text %></td>
-          <td>
-            <%= link_to "Edit", edit_admin_question_path(question), class: "btn btn-primary btn-sm" %>
-            <%= button_to "Delete", admin_question_path(question), method: :delete, data: { confirm: "Are you sure you want to delete this question?" }, class: "btn btn-danger btn-sm" %>
-          </td>
-        </tr>
-      <% end %>
+    <% @questions.each_with_index do |question, index| %>
+    <tr id="question_<%= question.id %>">
+      <td><%= index + 1 %></td>
+      <td><%= question.text %></td>
+      <td><%= correct_answer_for_question(question) %></td>
+      <td>
+        <%= link_to 'Edit', edit_admin_question_path(question), class: 'btn btn-primary btn-sm' %>
+        <%= link_to 'Delete', admin_question_path(question), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm', 'data-turbo-method': :delete, remote: true %>
+      </td>
+    </tr>
+  <% end %>
     </tbody>
   </table>
-
 </div>
+
+
+
