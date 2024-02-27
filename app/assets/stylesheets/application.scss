@@ -14,3 +14,14 @@
  *= require_self
  */
  @import "bootstrap";
+
+ .timer {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+  }
+
+  /* Custom styles for radio buttons */
+  .form-check-input[type="radio"]:checked + .form-check-label::before {
+    background-color: #007bff; /* Change the color to a darker shade */
+  }

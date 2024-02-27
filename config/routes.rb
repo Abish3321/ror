@@ -15,12 +15,14 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
-  post '/enroll', to: 'home#enroll_user'
+  post '/enroll', to: 'home#enroll', as: 'enroll'
+  get '/test/instructions', to: 'home#test_instructions', as: 'test_instructions'
+  get '/test', to: 'home#test_index', as: 'test_index'
+  get '/cancel_enrollment', to: 'home#cancel_enrollment', as: 'cancel_enrollment'
+  get '/logout', to: 'home#destroy', as: 'logout'
+  post '/submit_quiz', to: 'home#submit_quiz'
+  get '/test_score', to: 'home#test_score'
 
-  resources :tests, only: [:new, :create, :show] do
-    member do
-      post 'submit'
-      get 'results'
-    end
-  end
+
+
 end

@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-  serialize :answers, Array, coder: JSON
+  serialize :answers, type: Array, coder: JSON
   has_many :answers, dependent: :destroy
   accepts_nested_attributes_for :answers, reject_if: :all_blank, allow_destroy: true
 

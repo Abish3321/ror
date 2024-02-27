@@ -1,0 +1,25 @@
+
+
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body text-center">
+      <h2 class="card-title">Test Instructions</h2>
+      <p class="card-text">Please read the instructions carefully before starting the test.</p>
+      
+      <ol class="text-start">
+        <li>When You have selected your answer click next button to forward to the next question</li>
+        <li>Click the Next button corresponding to the best answer for each of the questions.</li>
+        <li>If you want to change an answer, simply click the button for your new choice.</li>
+        <li>If you have checked a button with a guess and then wish to deselect all of the buttons then click clear answer button.</li>
+        <li>When you are finished, the "Get Scores" button at the end of the quiz will calculate your score (from 00 to 20).</li>
+        <li>The "Feedback" button on your result page can send feedbacks to the admin.</li>
+      </ol>
+      
+      <p class="text-muted fs-5 mt-3">All the Best!</p>
+      
+      <%= link_to 'Continue to Test', test_index_path, class: 'btn btn-primary mt-3' %>
+      
+      <%= link_to 'Cancel', cancel_enrollment_path, remote: true, method: :delete, data: { confirm: 'Are you sure you want to cancel?' }, class: 'btn btn-secondary mt-3' %>
+    </div>
+  </div>
+</div>

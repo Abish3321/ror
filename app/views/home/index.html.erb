@@ -1,10 +1,24 @@
-<!-- app/views/home/index.html.erb -->
 <div class="container mt-4">
   <div class="bg-primary rounded p-3">
-    <h2 style="color: white;">Start the Quiz</h2>
-    <p style="color: white;">Good luck!</p>
+    <h2 style="color: white;">General Knowledge Quiz About India</h2> <!-- Updated header -->
+    <p style="color: white;">Test your knowledge about India with our quiz!</p> <!-- Description of the quiz -->
     <p>
-      <%= link_to 'Enroll And Start ❯', '#enrollmentModal', id: 'enroll-button', class: 'btn btn-primary', 'data-bs-toggle' => 'modal', style: 'margin-top: 10px; padding: 15px 25px; font-size: 18px;' %>
+      <a href="#" id="enroll-button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#enrollmentModal" style="margin-top: 10px; padding: 15px 25px; font-size: 18px;">Enroll And Start ❯</a>
     </p>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="enrollmentModal" tabindex="-1" aria-labelledby="enrollmentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="enrollmentModalLabel">Enrollment Form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render 'enrollment_form', user: @user %>
+      </div>
+    </div>
   </div>
 </div>

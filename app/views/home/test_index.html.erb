@@ -1,0 +1,60 @@
+<%= form_with url: submit_quiz_path, method: :post, id: 'quizForm' do |form| %>
+  <div class="container mt-5">
+    <div class="text-end mb-3">
+      <span class="badge bg-primary fs-3 p-2" id="timer">10:00</span>
+    </div>
+
+    <% @questions.each_with_index do |question, index| %>
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Question <%= index + 1 %></h5>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= question.text %></h5>
+          <% question.answers.each do |answer| %>
+            <div class="form-check">
+              <%= form.radio_button "answers[#{question.id}]", answer.id, class: "form-check-input", id: "answer_#{answer.id}" %>
+              <%= form.label "answer_#{answer.id}", answer.text, class: "form-check-label" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <br>
+    <% end %>
+
+  </div>
+
+  <div class="card-footer text-center">
+    <%= form.submit "Submit", class: "btn btn-primary btn-lg", id: "submitBtn", style: "margin-bottom: 50px; width:20%;" %>
+  </div>
+<% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const timerDisplay = document.getElementById('timer');
+    let remainingTime = 600; // 10 minutes in seconds
+    let timerInterval;
+
+    function updateTimerDisplay() {
+      const minutes = Math.floor(remainingTime / 60);
+      const seconds = remainingTime % 60;
+      timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function startTimer() {
+      updateTimerDisplay();
+      timerInterval = setInterval(function() {
+        remainingTime--;
+        updateTimerDisplay();
+        if (remainingTime <= 0) {
+          clearInterval(timerInterval);
+          console.log('Test time expired!');
+          submitQuiz(); // Automatically submit the quiz when time expires
+        }
+      }, 1000);
+    }
+
+    startTimer();
+
+  });
+</script>

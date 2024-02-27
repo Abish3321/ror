@@ -4,7 +4,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
     <title>Online Test</title>
@@ -40,31 +41,90 @@
   </style>
 </head>
 <body>
+  <%= render '/home/header' %>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #d0e7ff;">
-    <a class="navbar-brand" href="#">Online Test</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </nav>
+  <%= yield %>
+  
+  <%= render '/home/footer' %>
 
-    <%= yield %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Footer -->
-  <div class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <p><a href="#">About Us</a></p>
-        </div>
-        <div class="col-md-6">
-          <p><a href="#">Contact Us</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <script>
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   const nextBtn = document.getElementById('nextBtn');
+  //   const clearBtn = document.getElementById('clearBtn');
+  //   let questionIndex = 0;
+  //   const questions = <%= @questions.to_json %>; // Assuming questions is an array of objects
 
+  //   function showNextQuestion() {
+  //     if (questionIndex < questions.length - 1) {
+  //       questionIndex++;
+  //       const question = questions[questionIndex];
+  //       fetchNextQuestion(question.id);
+  //     } else {
+  //       alert("You have answered all questions.");
+  //       // Redirect or handle end of quiz
+  //     }
+  //   }
+
+  //   function fetchNextQuestion(questionId) {
+  //     fetch('/home/show_next_question', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ question_id: questionId })
+  //     })
+  //     .then(response => response.json()) // Assuming response is JSON
+  //     .then(data => {
+  //       if (!data.success) {
+  //         console.error('Error:', data.message); // Handle error from server
+  //         return; // Prevent updating UI if error occurs
+  //       }
+  //       document.getElementById('questionTitle').innerText = "Question " + (questionIndex + 1) + ": " + data.question;
+  //       document.querySelector('input[type="radio"]:checked').checked = false;
+  //     })
+  //     .catch(error => console.error('Network error:', error));
+  //   }
+
+  //   function clearSelectedAnswer() {
+  //     fetch('/home/clear_answer', {
+  //       method: 'POST'
+  //     })
+  //     .then(response => response.json()) // Assuming response is JSON
+  //     .then(data => {
+  //       if (!data.success) {
+  //         console.error('Error:', data.message); // Handle error from server
+  //         return; // Prevent clearing answer if error occurs
+  //       }
+  //       document.querySelector('input[type="radio"]:checked').checked = false;
+  //     })
+  //     .catch(error => console.error('Network error:', error));
+  //   }
+
+  //   nextBtn.addEventListener('click', showNextQuestion);
+  //   clearBtn.addEventListener('click', clearSelectedAnswer);
+
+  //   // Timer
+  //   const timerElement = document.createElement('div');
+  //   timerElement.classList.add('timer');
+  //   document.body.appendChild(timerElement);
+
+  //   let timeLeft = 60; // Seconds for each question
+  //   function updateTimer() {
+  //     if (timeLeft > 0) {
+  //       timerElement.innerText = "Time Left: " + timeLeft + "s";
+  //       timeLeft--;
+  //     } else {
+  //       showNextQuestion();
+  //       timeLeft = 60; // Reset timer for the next question
+  //     }
+  //   }
+
+  //   setInterval(updateTimer, 1000);
+  // });
+</script>
 
 </body>
 </html>

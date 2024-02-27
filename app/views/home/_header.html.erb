@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #d0e7ff;">
+  <div class="container">
+    <a class="navbar-brand" href="#">Online Test</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <% if current_user %>
+        <!-- If user is logged in -->
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle" style="font-size: 18px;"></i> <!-- User profile icon -->
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end p-4" aria-labelledby="navbarDropdown" style="width: 300px;">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="fw-bold">Name:</div>
+                <div><%= current_user.name %></div>
+              </li> <!-- User's name -->
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="fw-bold">Email:</div>
+                <div><%= current_user.email %></div>
+              </li> <!-- User's email -->
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="fw-bold">Contact Number:</div>
+                <div><%= current_user.contact_number %></div>
+              </li> <!-- User's contact number -->
+              <li class="dropdown-divider"></li>
+              <li class="list-group-item">
+                <%= link_to 'Logout', logout_path, method: :delete, class: 'btn btn-danger btn-sm w-100' %>
+              </li> <!-- Logout button -->
+            </ul>
+          </li>
+        </ul>
+      <% else %>
+        <!-- If user is not logged in -->
+        <ul class="navbar-nav">
+          <!-- You can add login and sign up links here if needed -->
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</nav>
